@@ -12,7 +12,7 @@ export async function middleware(nextRequest: NextRequest) {
 
 	if (matcher(pathname, "/some-route/:id*")) {
 		// Needs to be called inside route as it consumes the request.
-		// Once consumed the request body cannot be used by code that runs after the middleware.
+		// Once consumed the request body cannot be used by code that runs after the middleware, e.g. API routes.
 		const request = new MiddlewareRequest(nextRequest);
 		const response = await request.next();
 		//
